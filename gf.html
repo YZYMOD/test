@@ -87,6 +87,14 @@ function loop(timestamp) {
 
 spriteSheet.onload = () => requestAnimationFrame(loop);
 </script>
+<audio id="bgm" src="diand.mp3" autoplay loop muted></audio>
+
+<script>
+document.addEventListener("click", () => {
+    const bgm = document.getElementById("bgm");
+    bgm.muted = false;
+});
+</script>
 
 </body>
 </html>
