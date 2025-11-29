@@ -1,0 +1,28 @@
+<!-- Frame 1 -->
+<SubTexture name="GF idle dance 0" x="0" y="0" width="1288" height="1936"/>
+
+<!-- Frame 2 -->
+<SubTexture name="GF idle dance 1" x="1288" y="0" width="1288" height="1936"/>
+
+<!-- Frame 3 -->
+<SubTexture name="GF idle dance 2" x="2576" y="0" width="1288" height="1936"/>
+
+<!-- Frame 4 -->
+<SubTexture name="GF idle dance 3" x="3864" y="0" width="1288" height="1936"/>
+
+<!-- Frame 5 -->
+<SubTexture name="GF idle dance 4" x="5152" y="0" width="1288" height="1936"/>
+
+<!-- 
+    Animation Definition: GF Dancing Beat
+    
+    The 'indices' field defines the exact frame sequence, controlling the hold duration:
+    - Frame 0 (x3): 0, 0, 0
+    - Frame 1 (x4): 1, 1, 1, 1
+    - Frame 2 (x5): 2, 2, 2, 2, 2
+    - Frame 3 (x4): 3, 3, 3, 3
+    - Frame 4 (x3): 4, 4, 4
+    
+    Total 19 indices repeating in a loop.
+-->
+<anim name="GF Dancing Beat" anim="GF idle dance" indices="0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4" fps="24"/>
