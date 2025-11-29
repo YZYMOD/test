@@ -10,7 +10,7 @@
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/new_workout_plan_GF",
+	"image": "assets/shared/images/characters/new_workout_plan_GF",
 	"position": [0, 0],
 	"healthicon": "gf",
 	"flip_x": false,
