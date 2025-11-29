@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="new_workout_plan_GF.png">
+
+    <!-- Frames -->
+    <SubTexture name="GF idle dance 0" x="0" y="0" width="1288" height="1936"/>
+    <SubTexture name="GF idle dance 1" x="1288" y="0" width="1288" height="1936"/>
+    <SubTexture name="GF idle dance 2" x="2576" y="0" width="1288" height="1936"/>
+    <SubTexture name="GF idle dance 3" x="3864" y="0" width="1288" height="1936"/>
+    <SubTexture name="GF idle dance 4" x="5152" y="0" width="1288" height="1936"/>
+
+    <!-- Animation: GF Dancing Beat -->
+    <anim 
+        name="GF Dancing Beat" 
+        anim="GF idle dance" 
+        indices="0,0,0, 1,1,1,1, 2,2,2,2,2, 3,3,3,3, 4,4,4" 
+        fps="24"
+    />
+
+</TextureAtlas>
