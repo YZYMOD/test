@@ -28,25 +28,25 @@
 const spriteSheet = new Image();
 spriteSheet.src = "new_workout_plan_GF.png"; // Must be in same folder
 
-// Frame rectangle data extracted from your XML
+// Frame rectangle data
 const frames = [
     {x: 0,     y: 0, width: 1288, height: 1936},  // Frame 0
     {x: 1288,  y: 0, width: 1288, height: 1936},  // Frame 1
     {x: 2576,  y: 0, width: 1288, height: 1936},  // Frame 2
     {x: 3864,  y: 0, width: 1288, height: 1936},  // Frame 3
-    {x: 5152,  y: 0, width: 1288, height: 1936}   // Frame 4
+    {x: 5152,  y: 0, width: 1288, height: 1936}   // Frame 4 (5th frame)
 ];
 
-// Animation frame order (your indices list)
+// Animation order
 const animIndices = [
-    0,0,0,
-    1,1,1,1,
-    2,2,2,2,2,
-    3,3,3,3,
-    4,4,4
+    0,0,0,        // hold frame 0 (x3)
+    1,1,1,1,      // hold frame 1 (x4)
+    2,2,2,2,2,    // hold frame 2 (x5)
+    3,3,3,3,      // hold frame 3 (x4)
+    4,4,4         // hold frame 4 (x3)
 ];
 
-// Frame rate
+// FPS + timing
 const fps = 24;
 const frameDuration = 1000 / fps;
 
@@ -61,21 +61,18 @@ function drawFrame(frame) {
 
     const frameData = frames[frame];
 
-    // Scale to fit canvas
-    const scale = 0.25; // Adjust as needed
+    // Scale to fit the canvas (adjust if needed)
+    const scale = 0.25;
     const drawWidth = frameData.width * scale;
     const drawHeight = frameData.height * scale;
 
     ctx.drawImage(
         spriteSheet,
-        frameData.x,
-        frameData.y,
-        frameData.width,
-        frameData.height,
+        frameData.x, frameData.y,
+        frameData.width, frameData.height,
         canvas.width / 2 - drawWidth / 2,
         canvas.height / 2 - drawHeight / 2,
-        drawWidth,
-        drawHeight
+        drawWidth, drawHeight
     );
 }
 
@@ -88,9 +85,7 @@ function loop(timestamp) {
     requestAnimationFrame(loop);
 }
 
-spriteSheet.onload = () => {
-    requestAnimationFrame(loop);
-};
+spriteSheet.onload = () => requestAnimationFrame(loop);
 </script>
 
 </body>
