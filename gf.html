@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GF Animation Preview</title>
+<style>
+    body {
+        background: #111;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        color: white;
+        font-family: Arial, sans-serif;
+    }
+    canvas {
+        image-rendering: pixelated;
+    }
+</style>
+</head>
+<body>
+
+<canvas id="animCanvas" width="400" height="600"></canvas>
+
+<script>
+// --- Sprite Sheet Info ---
+const spriteSheet = new Image();
+spriteSheet.src = "new_workout_plan_GF.png"; // Must be in same folder
+
+// Frame rectangle data extracted from your XML
+const frames = [
+    {x: 0,     y: 0, width: 1288, height: 1936},  // Frame 0
+    {x: 1288,  y: 0, width: 1288, height: 1936},  // Frame 1
+    {x: 2576,  y: 0, width: 1288, height: 1936},  // Frame 2
+    {x: 3864,  y: 0, width: 1288, height: 1936},  // Frame 3
+    {x: 5152,  y: 0, width: 1288, height: 1936}   // Frame 4
+];
+
+// Animation frame order (your indices list)
+const animIndices = [
+    0,0,0,
+    1,1,1,1,
+    2,2,2,2,2,
+    3,3,3,3,
+    4,4,4
+];
+
+// Frame rate
+const fps = 24;
+const frameDuration = 1000 / fps;
+
+let canvas = document.getElementById("animCanvas");
+let ctx = canvas.getContext("2d");
+
+let currentIndex = 0;
+let lastFrameTime = 0;
+
+function drawFrame(frame) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    const frameData = frames[frame];
+
+    // Scale to fit canvas
+    const scale = 0.25; // Adjust as needed
+    const drawWidth = frameData.width * scale;
+    const drawHeight = frameData.height * scale;
+
+    ctx.drawImage(
+        spriteSheet,
+        frameData.x,
+        frameData.y,
+        frameData.width,
+        frameData.height,
+        canvas.width / 2 - drawWidth / 2,
+        canvas.height / 2 - drawHeight / 2,
+        drawWidth,
+        drawHeight
+    );
+}
+
+function loop(timestamp) {
+    if (timestamp - lastFrameTime >= frameDuration) {
+        drawFrame(animIndices[currentIndex]);
+        currentIndex = (currentIndex + 1) % animIndices.length;
+        lastFrameTime = timestamp;
+    }
+    requestAnimationFrame(loop);
+}
+
+spriteSheet.onload = () => {
+    requestAnimationFrame(loop);
+};
+</script>
+
+</body>
+</html>
